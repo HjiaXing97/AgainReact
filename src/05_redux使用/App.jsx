@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import store from "../store";
-import { addNumActions } from "../store/actionCreators";
+import { addNumActions, subNumActions } from "../store/actionCreators";
+import About from "./About";
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class App extends Component {
     store.dispatch(addNumActions(num));
   }
 
+  subNumber(num) {
+    store.dispatch(subNumActions(num));
+  }
+
   render() {
     const { counter } = this.state;
     return (
@@ -29,6 +34,12 @@ class App extends Component {
           <button onClick={() => this.addNumber(5)}>+5</button>
           <button onClick={() => this.addNumber(10)}>+10</button>
         </div>
+        <div>
+          <button onClick={() => this.subNumber(1)}>-1</button>
+          <button onClick={() => this.subNumber(5)}>-5</button>
+          <button onClick={() => this.subNumber(10)}>-10</button>
+        </div>
+        <About />
       </div>
     );
   }
