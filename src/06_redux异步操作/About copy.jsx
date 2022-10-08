@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBannersActions } from "../store/actionCreators";
+import axios from "axios";
+import {
+  changeBannersActions,
+  changeRecommendsActions,
+} from "../store/actionCreators";
 
 class About extends Component {
   componentDidMount() {
-    this.props.fetchBanners();
+    axios.get("http://123.207.32.32:8000/home/multidata").then((res) => {
+      const data = res.data.data;
+      this.props.changeBanners(data.banner.list);
+      this.props.changeRecommends(data.recommend.list);
+    });
   }
 
   render() {
@@ -33,8 +41,11 @@ const mapStoreToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchBanners() {
-    dispatch(fetchBannersActions());
+  changeBanners(banners) {
+    dispatch(changeBannersActions(banners));
+  },
+  changeRecommends(recommends) {
+    dispatch(changeRecommendsActions(recommends));
   },
 });
 

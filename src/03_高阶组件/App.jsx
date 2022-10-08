@@ -10,9 +10,6 @@ class App extends Component {
           <Home />
         </ThemeContext.Provider>
       </div>
-      // <ThemeContext.Provide value={{ color: "red", size: 30 }}>
-      //   <Home />
-      // </ThemeContext.Provide>
     );
   }
 }
