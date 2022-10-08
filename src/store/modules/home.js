@@ -1,3 +1,10 @@
+/*
+ * @Author: hovercao 17388766232@163.com
+ * @Date: 2022-10-08 15:55:37
+ * @LastEditors: hovercao 17388766232@163.com
+ * @LastEditTime: 2022-10-08 16:37:17
+ * @FilePath: \AgainReact\src\store\modules\home.js
+ */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
