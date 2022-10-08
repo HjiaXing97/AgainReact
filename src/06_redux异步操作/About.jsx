@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBannersActions } from "../store/actionCreators";
+import { fetchBannersActions } from "../store/feature/about/actionCreators";
 
 class About extends Component {
   componentDidMount() {
@@ -27,11 +27,16 @@ class About extends Component {
   }
 }
 
-const mapStoreToProps = (state) => ({
-  banners: state.banners,
-  recommends: state.recommends,
-});
-
+// const mapStoreToProps = (state) => ({
+//   banners: state.about.banners,
+//   recommends: state.about.recommends,
+// });
+const mapStoreToProps = (state) => {
+  return {
+    banners: state.about.banners,
+    recommends: state.about.recommends,
+  };
+};
 const mapDispatchToProps = (dispatch) => ({
   fetchBanners() {
     dispatch(fetchBannersActions());
