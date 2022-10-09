@@ -1,4 +1,11 @@
-import React, { useCallback, useState } from "react";
+/*
+ * @Author: hovercao 17388766232@163.com
+ * @Date: 2022-10-09 16:16:17
+ * @LastEditors: hovercao 17388766232@163.com
+ * @LastEditTime: 2022-10-09 18:32:15
+ * @FilePath: \AgainReact\src\03_useCallback\App.jsx
+ */
+import React, { useCallback, useRef, useState } from "react";
 
 function JxAddNumber(props) {
   const { addNumber } = props;
@@ -14,12 +21,19 @@ function App() {
   const [count, setCount] = useState(0);
   const [randomNum, setRandom] = useState(0);
 
-  const addNumber = useCallback(
-    function () {
-      setCount(count + 1);
-    },
-    [count] //如果不加count依赖,则会存在闭包陷阱，
-  );
+  const countRef = useRef();
+  countRef.current = count;
+  // const addNumber = useCallback(
+  //   function () {
+  //     setCount(count + 1);
+  //   },
+  //   [count] //如果不加count依赖,则会存在闭包陷阱，
+  // );
+
+  //优化
+  const addNumber = useCallback(function () {
+    setCount(countRef.current + 1);
+  }, []);
   return (
     <div>
       <p>App page {count}</p>
