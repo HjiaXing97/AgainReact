@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "src/*": ["src/*"],
+      "assets/*": ["src/assets*"],
+      "components/*": ["src/components*"],
+      "hooks/*": ["src/hooks*"],
+      "utils/*": ["src/utils*"],
+      "page/*": ["src/page*"],
+      "services/*": ["src/services*"],
+      "router/*": ["src/router*"],
+      "store/*": ["src/store*"]
+    },
+    "jsx": "preserve",
+    "lib": ["esnext", "DOM", "DOM.Iterable", "ScriptHost"]
+  }
+}
