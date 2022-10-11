@@ -21,6 +21,7 @@ module.exports = {
       utils: resolve("src/utils"),
       store: resolve("src/store"),
       services: resolve("src/services"),
+      // "@mui/styled-engine": "@mui/styled-engine-sc",
     },
   },
   plugins: [

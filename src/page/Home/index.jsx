@@ -1,20 +1,36 @@
-/*
- * @Author       : hovercao 17388766232@163.com
- * @Date         : 2022-10-10 14:09:05
- * @LastEditors  : hovercao 17388766232@163.com
- * @LastEditTime : 2022-10-10 14:51:27
- * @FilePath     : \AgainReact\src\page\Home\index.jsx
- */
+import SectionRooms from "components/SectionRooms";
 import { memo, useEffect } from "react";
-import request from "src/services";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import SectionHeader from "src/components/SectionHeader";
+import { fetchGoodPriceData } from "src/store/modules/home";
+import HomeBanner from "./components/HomeBanner";
+import { Count, HomeWrapper } from "./style";
 
 const Home = memo(() => {
+  const { goodPriceInfo } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+    }),
+    shallowEqual
+  );
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    request.get({ url: "/home/highscore" }).then((res) => {
-      console.log(res);
-    });
-  }, []);
-  return <div>Home</div>;
+    dispatch(fetchGoodPriceData());
+  }, [dispatch]);
+
+  return (
+    <HomeWrapper>
+      <HomeBanner></HomeBanner>
+      <Count>
+        <SectionHeader title={goodPriceInfo.title}></SectionHeader>
+        <SectionRooms
+          goodPriceInfo={goodPriceInfo?.list?.slice(0, 8)}
+        ></SectionRooms>
+      </Count>
+    </HomeWrapper>
+  );
 });
 
 export default Home;
