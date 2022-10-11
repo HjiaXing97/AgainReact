@@ -26,7 +26,7 @@ const Home = memo(() => {
       <Count>
         <SectionHeader title={goodPriceInfo.title}></SectionHeader>
         <AllRoom>
-          {goodPriceInfo?.list?.map((node) => {
+          {goodPriceInfo?.list?.slice(0, 8).map((node) => {
             return <RoomItem key={node.id} roomItem={node}></RoomItem>;
           })}
         </AllRoom>
