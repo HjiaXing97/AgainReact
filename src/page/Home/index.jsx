@@ -1,10 +1,10 @@
+import SectionRooms from "components/SectionRooms";
 import { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import RoomItem from "src/components/RoomItem";
 import SectionHeader from "src/components/SectionHeader";
 import { fetchGoodPriceData } from "src/store/modules/home";
 import HomeBanner from "./components/HomeBanner";
-import { AllRoom, Count, HomeWrapper } from "./style";
+import { Count, HomeWrapper } from "./style";
 
 const Home = memo(() => {
   const { goodPriceInfo } = useSelector(
@@ -25,11 +25,9 @@ const Home = memo(() => {
       <HomeBanner></HomeBanner>
       <Count>
         <SectionHeader title={goodPriceInfo.title}></SectionHeader>
-        <AllRoom>
-          {goodPriceInfo?.list?.slice(0, 8).map((node) => {
-            return <RoomItem key={node.id} roomItem={node}></RoomItem>;
-          })}
-        </AllRoom>
+        <SectionRooms
+          goodPriceInfo={goodPriceInfo?.list?.slice(0, 8)}
+        ></SectionRooms>
       </Count>
     </HomeWrapper>
   );
