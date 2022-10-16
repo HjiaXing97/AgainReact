@@ -8,7 +8,10 @@ const HomeSection = memo((props) => {
   return (
     <SectionWrapper>
       <SectionHeader title={infoData?.title} subtitle={infoData?.subtitle} />
-      <SectionRooms goodPriceInfo={infoData?.list?.slice(0, 8)} />
+      <SectionRooms
+        goodPriceInfo={infoData?.list?.slice(0, 8)}
+        itemWidth={"25%"}
+      />
     </SectionWrapper>
   );
 });

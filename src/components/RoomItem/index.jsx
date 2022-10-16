@@ -11,10 +11,10 @@ import {
   RoomRating,
 } from "./style";
 const RoomItem = memo((props) => {
-  const { roomItem } = props;
-  console.log(roomItem);
+  const { roomItem, itemWidth = "25%" } = props;
+
   return (
-    <ItemWrapper>
+    <ItemWrapper itemWidth={itemWidth}>
       <Inner>
         <Cover>
           <img src={roomItem.picture_url} alt="" />
