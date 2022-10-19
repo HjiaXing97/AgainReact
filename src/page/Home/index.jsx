@@ -1,15 +1,18 @@
-import SectionRooms from "components/SectionRooms";
 import { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import SectionHeader from "src/components/SectionHeader";
 import { fetchGoodPriceData } from "src/store/modules/home";
 import HomeBanner from "./components/HomeBanner";
-import { Count, HomeWrapper } from "./style";
+import HomeSection from "./components/HomeSection";
+import { HomeWrapper } from "./style";
+import HomeSectionV2 from "page//Home/components/HomeSectionV2";
+import isEmptyObject from "utils/isEmptyObject";
 
 const Home = memo(() => {
-  const { goodPriceInfo } = useSelector(
+  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
     }),
     shallowEqual
   );
@@ -22,13 +25,13 @@ const Home = memo(() => {
 
   return (
     <HomeWrapper>
-      <HomeBanner></HomeBanner>
-      <Count>
-        <SectionHeader title={goodPriceInfo.title}></SectionHeader>
-        <SectionRooms
-          goodPriceInfo={goodPriceInfo?.list?.slice(0, 8)}
-        ></SectionRooms>
-      </Count>
+      <HomeBanner />
+      {isEmptyObject(discountInfo) && (
+        <HomeSectionV2 infoData={discountInfo}></HomeSectionV2>
+      )}
+
+      <HomeSection infoData={goodPriceInfo} />
+      <HomeSection infoData={highScoreInfo} />
     </HomeWrapper>
   );
 });
