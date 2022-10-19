@@ -17,3 +17,10 @@ export function getHomeDiscount() {
     url: "/home/discount",
   });
 }
+
+//热门目的地
+export  function getHomeHotRecommendData(){
+  return request.get({
+    url:'/home/hotrecommenddest'
+  })
+}

@@ -3,6 +3,7 @@ import { SectionWrapper } from "./style";
 import SectionHeader from "components/SectionHeader";
 import SectionRooms from "components/SectionRooms";
 import SectionTabs from "components/SectionTabs";
+import SectionFooter from "components/SectionFooter";
 
 const HomeSectionV2 = memo((props) => {
   const { infoData } = props;
@@ -34,6 +35,7 @@ const HomeSectionV2 = memo((props) => {
         goodPriceInfo={infoData?.dest_list?.[tabName]}
         itemWidth={"33.33%"}
       ></SectionRooms>
+      <SectionFooter name={tabName} />
     </SectionWrapper>
   );
 });

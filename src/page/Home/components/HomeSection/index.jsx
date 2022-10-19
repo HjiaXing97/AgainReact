@@ -2,6 +2,7 @@ import SectionRooms from "components/SectionRooms";
 import { memo } from "react";
 import SectionHeader from "src/components/SectionHeader";
 import { SectionWrapper } from "./style";
+import SectionFooter from "components/SectionFooter";
 
 const HomeSection = memo((props) => {
   const { infoData } = props;
@@ -12,6 +13,7 @@ const HomeSection = memo((props) => {
         goodPriceInfo={infoData?.list?.slice(0, 8)}
         itemWidth={"25%"}
       />
+      <SectionFooter />
     </SectionWrapper>
   );
 });
