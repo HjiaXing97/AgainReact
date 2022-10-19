@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { memo, useState } from "react";
 import { TabsItem, TabsWrappers } from "./style.js";
+import ScrollView from "src/base-ui/ScrollView";
 
 const SectionTabs = memo((props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,17 +14,19 @@ const SectionTabs = memo((props) => {
 
   return (
     <TabsWrappers>
-      {tabNames.map((node, index) => {
-        return (
-          <TabsItem
-            className={classNames({ active: currentIndex === index })}
-            key={index.toString()}
-            onClick={() => itemClick(index, node)}
-          >
-            {node}
-          </TabsItem>
-        );
-      })}
+      <ScrollView>
+        {tabNames.map((node, index) => {
+          return (
+            <TabsItem
+              className={classNames({ active: currentIndex === index })}
+              key={index.toString()}
+              onClick={() => itemClick(index, node)}
+            >
+              {node}
+            </TabsItem>
+          );
+        })}
+      </ScrollView>
     </TabsWrappers>
   );
 });

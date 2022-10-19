@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const TabsWrappers = styled.div`
-  display: flex;
   margin-top: 20px;
 `;
 export const TabsItem = styled.div`
