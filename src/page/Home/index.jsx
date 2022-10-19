@@ -1,17 +1,13 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import SectionHeader from "src/components/SectionHeader";
-import SectionRooms from "src/components/SectionRooms";
-import SectionTabs from "src/components/SectionTabs";
 import { fetchGoodPriceData } from "src/store/modules/home";
 import HomeBanner from "./components/HomeBanner";
 import HomeSection from "./components/HomeSection";
-import { Discount, HomeWrapper } from "./style";
+import { HomeWrapper } from "./style";
+import HomeSectionV2 from "page//Home/components/HomeSectionV2";
+import isEmptyObject from "utils/isEmptyObject";
 
 const Home = memo(() => {
-  const [tabNameArr, setTabNameArr] = useState([]);
-  const [tabName, setTabName] = useState("佛山");
-
   const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
@@ -27,32 +23,13 @@ const Home = memo(() => {
     dispatch(fetchGoodPriceData());
   }, [dispatch]);
 
-  useEffect(() => {
-    const arr = discountInfo?.dest_address?.map((node) => node.name);
-    setTabNameArr(arr);
-  }, [discountInfo]);
-
-  const tabClickHandle = useCallback(function (index, name) {
-    setTabName(name);
-  }, []);
-
   return (
     <HomeWrapper>
       <HomeBanner />
-      <Discount>
-        <SectionHeader
-          title={discountInfo.title}
-          subtitle={discountInfo.subtitle}
-        ></SectionHeader>
-        <SectionTabs
-          tabNames={tabNameArr}
-          tabClickHandle={tabClickHandle}
-        ></SectionTabs>
-        <SectionRooms
-          goodPriceInfo={discountInfo?.dest_list?.[tabName]}
-          itemWidth={"33.33%"}
-        ></SectionRooms>
-      </Discount>
+      {isEmptyObject(discountInfo) && (
+        <HomeSectionV2 infoData={discountInfo}></HomeSectionV2>
+      )}
+
       <HomeSection infoData={goodPriceInfo} />
       <HomeSection infoData={highScoreInfo} />
     </HomeWrapper>
