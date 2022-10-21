@@ -19,8 +19,14 @@ export function getHomeDiscount() {
 }
 
 //热门目的地
-export  function getHomeHotRecommendData(){
+export function getHomeHotRecommendData() {
   return request.get({
-    url:'/home/hotrecommenddest'
-  })
+    url: "/home/hotrecommenddest",
+  });
+}
+
+export function getHomeLongForData() {
+  return request.get({
+    url: "/home/longfor",
+  });
 }
