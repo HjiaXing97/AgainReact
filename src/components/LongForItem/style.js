@@ -1,22 +1,19 @@
 import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
-  flex-shrink: revert;
+  flex-shrink: 0;
   width: 20%;
 `;
 
 export const Inner = styled.div`
   position: relative;
   padding: 8px;
-  overflow: hidden;
 `;
-
 export const Cover = styled.img`
   width: 100%;
-  height: 100%;
 `;
 
-export const BGCover = styled.div`
+export const BgCover = styled.div`
   position: absolute;
   left: 8px;
   right: 8px;
@@ -29,8 +26,17 @@ export const BGCover = styled.div`
   );
 `;
 
-export const Count = styled.div`
-  //color: #fff;
+export const Info = styled.div`
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px 32px;
+  color: #fff;
   .city {
     font-size: 18px;
     font-weight: 600;

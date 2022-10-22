@@ -1,17 +1,17 @@
 import { memo } from "react";
-import { ItemWrapper, Cover, Count, Inner, BGCover } from "./style";
+import { ItemWrapper, Inner, Cover, BgCover, Info } from "./style";
 
 const LongForItem = memo((props) => {
   const { longItem } = props;
   return (
     <ItemWrapper>
       <Inner>
-        <Cover src={longItem.picture_url}></Cover>
-        <BGCover />
-        <Count>
+        <Cover src={longItem.picture_url} alt="" />
+        <BgCover></BgCover>
+        <Info>
           <p className={"city"}>{longItem.city}</p>
           <p className={"price"}>均价：{longItem.price}</p>
-        </Count>
+        </Info>
       </Inner>
     </ItemWrapper>
   );
